@@ -91,6 +91,22 @@ var dispShops = function (shopObj) {
     newRow.innerHTML = '<td>' + shopObj[j].shopName + '</td>' + tableCookieContent;
     tableContent.appendChild(newRow);
   }
+
+  //add hourly total
+  var hourlyCookieTotal = 0;
+  newRow = document.createElement('tr');
+  var newLine = '<td>Hourly Cookie Totals</td>';
+  for (j = 0; j < arrOfTimes.length; j++) {
+    for (i = 0; i < shopObj.length; i++) {
+      hourlyCookieTotal += arrOfStoresCookies[i][j];
+    }
+    newLine += '<td>' + hourlyCookieTotal + '</td>';
+    newRow.innerHTML = newLine;
+    tableContent.appendChild(newRow);
+    hourlyCookieTotal = 0;
+  }
+
+
 };
 
 //Create array of our objects and display them
