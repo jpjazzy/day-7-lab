@@ -140,11 +140,27 @@ footer {
   color: #B22700;
 }
 
-.data h2 {
-  font-size: 26px;
-  margin-bottom: 5px;
+.data td:first-child {
+  font-size: 18px;
+  text-align: center;
   text-transform: uppercase;
 }
+
+.data thead{
+  font-size: 19px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  text-transform: center;
+}
+
+table, th, td, tr{
+  border: 1px solid black;
+  height: 39px;
+  text-align: center;
+}
+
+
+
 
 .text h2 {
   font-size: 26px;

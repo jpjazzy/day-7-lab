@@ -1,175 +1,98 @@
 'use strict';
 
-//Declare all store objects as literals
-var firstAndPike = {
-  shopName: '1st and Pike',
-  minCust: 23,
-  maxCust: 65,
-  avgCookieSale: 6.3,
-  getStoreData: function() { //Return data in an array format
-    return [this.minCust, this.maxCust, this.avgCookieSale];
-  },
-  genRandCxHr: function() { //generate random number of cx
-    var randCx = Math.random() * (this.maxCust - this.minCust) + this.minCust;
-    randCx = Math.ceil(randCx) - 1; //subtract 1 to be inclusive since rounding up
-    return randCx;
-  },
-  genRandCookHr: function () { //Generate random cookies per hour
-    var randCookiesHr = [];
-    var genRandCookies = 0;
-    for (var i = 0; i < 15; i++) { //Generate cookies sold per hr from 6 am - 9 pm
-      genRandCookies = this.genRandCxHr() * this.avgCookieSale;
-      genRandCookies = Math.ceil(genRandCookies) - 1; //round and subtract 1 to be inclusive since rounding up
-      randCookiesHr.push(genRandCookies);
-    }
-    return randCookiesHr; // return array of cookies per hour
-  }
+//Use global variable with an array of times the store is open
+//To make lists update if more stores are added
+var arrOfTimes = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm'];
+
+//declare constructor method for shops
+function Store(shopName, minCust, maxCust, avgCookieSale) {
+  this.shopName = shopName;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookieSale = avgCookieSale;
+}
+
+//Create methods for constructor
+Store.prototype.getStoreData = function () { //simply returns all store data in array format
+  return [this.minCust, this.maxCust, this.avgCookieSale];
 };
 
-var seatacAirport = {
-  shopName: 'Seatac Airport',
-  minCust: 3,
-  maxCust: 24,
-  avgCookieSale: 1.2,
-  getStoreData: function() { //Return data in an array format
-    return [this.minCust, this.maxCust, this.avgCookieSale];
-  },
-  genRandCxHr: function() { //generate random number of cx
-    var randCx = Math.random() * (this.maxCust - this.minCust) + this.minCust;
-    randCx = Math.ceil(randCx) - 1; //subtract 1 to be inclusive since rounding up
-    return randCx;
-  },
-  genRandCookHr: function () { //Generate random cookies per hour
-    var randCookiesHr = [];
-    var genRandCookies = 0;
-    for (var i = 0; i < 15; i++) { //Generate cookies sold per hr from 6 am - 9 pm
-      genRandCookies = this.genRandCxHr() * this.avgCookieSale;
-      genRandCookies = Math.ceil(genRandCookies) - 1; //round and subtract 1 to be inclusive since rounding up
-      randCookiesHr.push(genRandCookies);
-    }
-    return randCookiesHr; // return array of cookies per hour
-  }
+Store.prototype.genRandCxHr = function() { //generate random number of cx
+  var randCx = Math.random() * (this.maxCust - this.minCust) + this.minCust;
+  randCx = Math.ceil(randCx) - 1; //subtract 1 to be inclusive since rounding up
+  return randCx;
 };
 
-var seattleCenter = {
-  shopName: 'Seattle Center',
-  minCust: 11,
-  maxCust: 38,
-  avgCookieSale: 3.7,
-  getStoreData: function() { //Return data in an array format
-    return [this.minCust, this.maxCust, this.avgCookieSale];
-  },
-  genRandCxHr: function() { //generate random number of cx
-    var randCx = Math.random() * (this.maxCust - this.minCust) + this.minCust;
-    randCx = Math.ceil(randCx) - 1; //subtract 1 to be inclusive since rounding up
-    return randCx;
-  },
-  genRandCookHr: function () { //Generate random cookies per hour
-    var randCookiesHr = [];
-    var genRandCookies = 0;
-    for (var i = 0; i < 15; i++) { //Generate cookies sold per hr from 6 am - 9 pm
-      genRandCookies = this.genRandCxHr() * this.avgCookieSale;
-      genRandCookies = Math.ceil(genRandCookies) - 1; //round and subtract 1 to be inclusive since rounding up
-      randCookiesHr.push(genRandCookies);
-    }
-    return randCookiesHr; // return array of cookies per hour
+Store.prototype.genRandCookHr = function () { //Generate random cookies per hour
+  var randCookiesHr = [];
+  var genRandCookies = 0;
+  for (var i = 0; i < arrOfTimes.length; i++) { //Generate cookies sold per hr from 6 am - 9 pm
+    genRandCookies = this.genRandCxHr() * this.avgCookieSale;
+    genRandCookies = Math.ceil(genRandCookies) - 1; //round and subtract 1 to be inclusive since rounding up
+    randCookiesHr.push(genRandCookies);
   }
+  return randCookiesHr; // return array of cookies per hour
 };
 
-var capitolHill = {
-  shopName: 'Capitol Hill',
-  minCust: 20,
-  maxCust: 38,
-  avgCookieSale: 2.3,
-  getStoreData: function() { //Return data in an array format
-    return [this.minCust, this.maxCust, this.avgCookieSale];
-  },
-  genRandCxHr: function() { //generate random number of cx
-    var randCx = Math.random() * (this.maxCust - this.minCust) + this.minCust;
-    randCx = Math.ceil(randCx) - 1; //subtract 1 to be inclusive since rounding up
-    return randCx;
-  },
-  genRandCookHr: function () { //Generate random cookies per hour
-    var randCookiesHr = [];
-    var genRandCookies = 0;
-    for (var i = 0; i < 15; i++) { //Generate cookies sold per hr from 6 am - 9 pm
-      genRandCookies = this.genRandCxHr() * this.avgCookieSale;
-      genRandCookies = Math.ceil(genRandCookies) - 1; //round and subtract 1 to be inclusive since rounding up
-      randCookiesHr.push(genRandCookies);
-    }
-    return randCookiesHr; // return array of cookies per hour
-  }
-};
-
-var alki = {
-  shopName: 'Akali',
-  minCust: 2,
-  maxCust: 16,
-  avgCookieSale: 4.6,
-  getStoreData: function() { //Return data in an array format
-    return [this.minCust, this.maxCust, this.avgCookieSale];
-  },
-  genRandCxHr: function() { //generate random number of cx
-    var randCx = Math.random() * (this.maxCust - this.minCust) + this.minCust;
-    randCx = Math.ceil(randCx) - 1; //subtract 1 to be inclusive since rounding up
-    return randCx;
-  },
-  genRandCookHr: function () { //Generate random cookies per hour
-    var randCookiesHr = [];
-    var genRandCookies = 0;
-    for (var i = 0; i < 15; i++) { //Generate cookies sold per hr from 6 am - 9 pm
-      genRandCookies = this.genRandCxHr() * this.avgCookieSale;
-      genRandCookies = Math.ceil(genRandCookies) - 1; //round and subtract 1 to be inclusive since rounding up
-      randCookiesHr.push(genRandCookies);
-    }
-    return randCookiesHr; // return array of cookies per hour
-  }
-};
+//declare all objects with constructor format
+var firstAndPike = new Store('1st and Pike', 23, 65, 6.3);
+var seatacAirport = new Store('Seatac Airport', 3, 24, 1.2);
+var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
+var capitolHill = new Store('Capitol Hill', 20, 38, 2.3);
+var alki = new Store('Alki', 2, 16, 4.6);
 
 //displays shop cookies list (with total) when called
-var dispShop = function (shopObj) {
-  //display results as an unorder list in browser
-  var arrOfTimes = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm'];
-  var arrOfCookies = shopObj.genRandCookHr(); // Generate random avg cookies per hr array
-  console.log(arrOfCookies);
+var dispShops = function (shopObj) {
 
+  //vars for data to be stored
+  var data = ['<td></td>'];
+  var table = document.getElementById('table_head');
+  var tableContent = document.getElementById('table_content');
 
-
-  //create html elements to display on page
-  var docData = document.createElement('ul');
-
-  //add label of shop to top
-  var storeName = document.createElement('div');
-  storeName.innerHTML = '<h1>' + shopObj.shopName + '</h1>';
-  document.body.appendChild(storeName);
-
-  var arrOfCookiesHTML = [];
-  var totalCookies = 0;
-  for (var i = 0; i < arrOfTimes.length; i++) {
-    arrOfCookiesHTML.push('<li>' + arrOfTimes[i] + ': ' + arrOfCookies[i] + '</li>');
-    totalCookies += arrOfCookies[i];
+  var arrOfStoresCookies = [];
+  //get array of cookies
+  for (var i = 0; i < shopObj.length; i++) {
+    arrOfStoresCookies.push(shopObj[i].genRandCookHr());
   }
 
-  console.log(arrOfCookiesHTML);
 
-  //Add total cookies to the end
-  arrOfCookiesHTML.push('<li> total: ' + totalCookies + '</li>');
+  //loop through array to add times
+  for (i = 0; i < arrOfTimes.length; i++) {
+    data.push(
+      '<td>' + arrOfTimes[i] + '</td>'
+    );
+  }
+  data.push('total cookies sold'); //add last row
 
-  var strOfCookiesHTML = arrOfCookiesHTML.join('');
-  console.log(strOfCookiesHTML);
+  //append row of headings for times
+  var tableHeaderContent = data.join('');
+  var newRow = document.createElement('tr');
+  newRow.innerHTML = tableHeaderContent;
+  table.appendChild(newRow);
 
-  //stuff str into ul
-  docData.innerHTML = strOfCookiesHTML;
-  console.log(docData);
 
 
-  //Stick new element on the page
-  document.getElementById('test').appendChild(docData);
-} ;
+  //Place data in cookies content
+  var totalCookieCounter = 0;
+  for (var j = 0; j < shopObj.length; j++) {
+    data = [];
+    totalCookieCounter = 0;
+    for (i = 0; i < arrOfTimes.length; i++) {
+      data.push(
+        '<td>' + arrOfStoresCookies[j][i] + '</td>'
+      );
+      totalCookieCounter += arrOfStoresCookies[j][i];
+    }
+    data.push(totalCookieCounter); //add last value for total cookies
+
+    //append row of headings for times
+    var tableCookieContent = data.join('');
+    newRow = document.createElement('tr');
+    newRow.innerHTML = '<td>' + shopObj[j].shopName + '</td>' + tableCookieContent;
+    tableContent.appendChild(newRow);
+  }
+};
 
 //Create array of our objects and display them
 var arrOfStores = [firstAndPike, seatacAirport, seattleCenter, capitolHill, alki];
-for (var i = 0; i < arrOfStores.length; i++) {
-
-  dispShop(arrOfStores[i]);
-}
+dispShops(arrOfStores);
