@@ -161,6 +161,10 @@ table, th, td, tr{
   text-align: center;
 }
 
+td:hover{
+  font-size: 30px;
+}
+
 .text h2 {
   font-size: 26px;
   margin-bottom: 5px;
