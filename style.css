@@ -145,6 +145,7 @@ footer {
   font-size: 18px;
   text-align: center;
   text-transform: uppercase;
+  width: 400px;
 }
 
 .data thead{
