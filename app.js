@@ -105,10 +105,8 @@ var dispShops = function (shopObj) {
     tableContent.appendChild(newRow);
     hourlyCookieTotal = 0;
   }
-
-
 };
 
-//Create array of our objects and display them
+//Create array of our shops and display them
 var arrOfStores = [firstAndPike, seatacAirport, seattleCenter, capitolHill, alki];
 dispShops(arrOfStores);

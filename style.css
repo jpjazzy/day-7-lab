@@ -163,6 +163,8 @@ table, th, td, tr{
 
 td:hover{
   font-size: 30px;
+  width: 70px;
+  height: 70px;
 }
 
 .text h2 {
