@@ -129,7 +129,7 @@ footer {
 
 .data {
   font-family: helvetica, sans-serif;
-  background-color: #00FFB4;
+  background-color: #004e37;
   color: #FF4C19;
   clear: both;
   margin-bottom: 20px;
@@ -141,6 +141,7 @@ footer {
 }
 
 .data td:first-child {
+  background-color: #000000;
   font-size: 18px;
   text-align: center;
   text-transform: uppercase;
@@ -148,19 +149,23 @@ footer {
 
 .data thead{
   font-size: 19px;
+  background-color: #000000;
   margin-bottom: 5px;
   text-transform: uppercase;
   text-transform: center;
 }
 
 table, th, td, tr{
-  border: 1px solid black;
+  border: 5px solid #004e37;
   height: 39px;
   text-align: center;
 }
 
-
-
+td:hover{
+  font-size: 30px;
+  width: 70px;
+  height: 70px;
+}
 
 .text h2 {
   font-size: 26px;
